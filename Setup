@@ -1,0 +1,20 @@
+#!/bin/bash
+clear
+echo ""
+echo "Script Initializer"
+echo "Version 1.0.0"
+echo "Written by Rogu3Panda"
+echo ""
+echo "Script Purpose: Copies all Scripts to /usr/local/bin/ folder to enable global initalization"
+echo ""
+echo "Would you like to add all script files to /usr/local/bin location? (y or n)"
+read var
+
+if [ $var == "y" ]; then
+for file in *.sh ;do
+echo "Moving $file to /usr/local/bin/"
+mv $file /usr/local/bin/
+echo "File Moved Successfully"
+done
+fi
+exit 0
