@@ -7,6 +7,11 @@ echo "Written by Rogu3Panda"
 echo ""
 echo "Script Purpose: Scans for all SSL Ciphers including TLS1.1, TLS1.0, SSLv3, SSLv2"
 echo ""
+echo "Option: -h Help Interface"
+echo "Option: -t <target file>"
+echo "Option: -o <Output file>"
+echo "Option: -p <port>, if not specified, script will default to 443"
+
 while getopts ":ht:o:p:pL:" opt;do
 
   options_found=1
@@ -46,9 +51,9 @@ if ((!options_found));then
 	echo "Please enter in the appropriate optoins"
 	exit 0
 fi
-
+clear
 for IP in $(cat $TARGET_FILE);do
-	echo "Checking for Weak Cipher SUites on: $IP:$PORT" 2>&1 | tee -a $OUTPUT_FILE
+	echo "Checking for Weak Cipher Suites on: $IP:$PORT" 2>&1 | tee -a $OUTPUT_FILE
 	sslscan --no-failed $IP:$PORT 2>&1 | tee -a $OUTPUT_FILE
 done
 exit 0
